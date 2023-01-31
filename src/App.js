@@ -17,6 +17,7 @@ function App() {
   const p1 = ['Cake', 'Icecream','Chocolate','Gifts','Flowers'];
   const s1 = ['Profile', 'Account', 'Dashboard', 'Logout'];
   let lp="Bakery";
+  console.log("updated");
   return (
     <div className="App">
      
