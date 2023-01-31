@@ -55,6 +55,7 @@ export default function IMSAppbar(props) {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Link to="/" style={{textDecoration:"none"}}>
           <Typography
             variant="h6"
             noWrap
@@ -72,6 +73,7 @@ export default function IMSAppbar(props) {
           >
             {landingpage}
           </Typography>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -103,9 +105,11 @@ export default function IMSAppbar(props) {
               }}
             >
               {pages.map((page) => (
+                <Link to={page} style={{textDecoration:"none"}}>
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>

@@ -14,7 +14,7 @@ import Delivery from './Pages/Delivery';
 
 function App() {
 
-  const p1 = ['Home', 'Cake', 'Icecream','Chocolate','Gifts','Flowers'];
+  const p1 = ['Cake', 'Icecream','Chocolate','Gifts','Flowers'];
   const s1 = ['Profile', 'Account', 'Dashboard', 'Logout'];
   let lp="Bakery";
   return (
@@ -30,7 +30,7 @@ function App() {
         <Route path="Gifts" element={<Gifts/>}></Route>
         <Route path="/Flowers" element={<Flowers/>}></Route>
         <Route path="/Carts" element={<Carts/>}></Route>
-        <Route path="/" element={<Bakery/>}></Route>
+        <Route path="/" element={<Flowers/>}></Route>
         <Route path="/Delivery" element={<Delivery/>}></Route>
       </Routes>
       </BrowserRouter>
