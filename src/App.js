@@ -20,9 +20,8 @@ function App() {
   console.log("updated");
   return (
     <div className="App">
-     
       <BrowserRouter>
-      <IMSAppbar pages={p1} settings={s1} landingpage={lp}></IMSAppbar>
+      <IMSAppbar pages={p1} settings={s1} landingpage={lp}></IMSAppbar>      
       <Routes>
         <Route path="/Home" element={<Home/>}></Route>
         <Route path="/Cake" element={<Cake/>}></Route>
