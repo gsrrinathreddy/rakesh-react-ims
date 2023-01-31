@@ -26,17 +26,17 @@ export default function Carts(){
     let cartList=useSelector((state)=>state.cart.cartList);
     console.log("this is cartList",cartList);
     const navigate=useNavigate()
-   
+    let sum=0;
     return(
     
         <>
 
-        <h3>cakes ordered</h3>
+        <h3>Order Details</h3>
 
 
         <Box>
-            Order Details:
-            <Grid container>
+
+            <Grid container sx={{fontWeight:'bold'}}>
                     <Grid md={2}>
                         <Typography variant="h6" sx={{fontWeight:"bold"}}>
                             Name
@@ -97,12 +97,13 @@ export default function Carts(){
                         }
 
                     </Grid>
-                    <Grid md={2}>
+                    <Grid md={3}>
                         <Typography variant="h6" sx={{fontWeight:"bold"}}>
                             Amount
                         </Typography>
                         {
                             cartList.map((item)=>{
+                                sum +=(item.qty * item.discountedPrice)
                                 return(
                                     <Typography>
                                      {item.qty * item.discountedPrice}
@@ -111,6 +112,7 @@ export default function Carts(){
                                 )
                             })
                         }
+                        Total Amount to be Paid :{sum}
                     </Grid>
 
             </Grid>
