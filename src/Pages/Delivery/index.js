@@ -43,7 +43,7 @@ export default function Delivery() {
         {steps[0].itemname.length >= 1 ? (
           <IMSStepper steps={steps}></IMSStepper>
         ) : (
-          "Item Not Added to cart"
+          "Items Not Added to cart"
         )}
         {/* <IMSStepper steps={steps}></IMSStepper> */}
       </Typography>
