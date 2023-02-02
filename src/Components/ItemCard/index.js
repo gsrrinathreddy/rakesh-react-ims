@@ -4,30 +4,25 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { Google } from "@mui/icons-material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import IMSBadge from "../IMSBadge";
 import { Button } from "@mui/material";
-import { ordered as cakeordered } from "../../Features/Cake/cakeSlice";
 import { useDispatch, useSelector } from "react-redux";
 import TextField from "@mui/material/TextField";
 import IMSSnackbar from "../IMSSnackbar";
-import Chip from "@mui/material/Chip";
 import Box from "@mui/material/Box";
-import { ordered as giftordered } from "../../Features/Gift/giftSlice";
-import { ordered as chocolateordered } from "../../Features/Chocolate/chocolateSlice";
 import Stack from "@mui/material/Stack";
-import { ordered as icecreamordered } from "../../Features/Icecream/icecreamSlice";
-import { ordered as flowerordered } from "../../Features/Flower/flowerSlice";
 import IMSChip from "../IMSChip";
+import IMSSpeeddial from "../IMSSpeeddial";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -160,9 +155,10 @@ export default function ItemCard(props) {
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share">
+          <IMSSpeeddial share={actions}></IMSSpeeddial>
+          {/* <IconButton aria-label="share">
             <ShareIcon />
-          </IconButton>
+          </IconButton> */}
         </Typography>
       </CardContent>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
@@ -171,3 +167,10 @@ export default function ItemCard(props) {
     </Card>
   );
 }
+
+const actions = [
+  { icon: <InstagramIcon></InstagramIcon>, name: "Instagram" },
+  { icon: <FacebookIcon></FacebookIcon>, name: "Facebook" },
+  { icon: <Google></Google>, name: "Google" },
+  { icon: <LinkedInIcon></LinkedInIcon>, name: "LinkedIn" },
+];

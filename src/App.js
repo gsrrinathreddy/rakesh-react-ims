@@ -13,10 +13,13 @@ import Bakery from "./Pages/Bakery";
 import Delivery from "./Pages/Delivery";
 import Profile from "./Pages/Profile";
 import NotFound from "./Pages/NotFound";
+import Account from "./Pages/Account";
+import Dashboard from "./Pages/Dashboard";
+import Logout from "./Pages/Logout";
 
 function App() {
   const p1 = ["Cake", "Icecream", "Chocolate", "Gifts", "Flowers"];
-  const s1 = ["Profile", "Account", "Dashboard", "Logout"];
+  const s1 = ["Profile", "Account", "Dashboard", "Delivery", "Logout"];
   let lp = "Bakery";
   console.log("updated");
   return (
@@ -35,6 +38,10 @@ function App() {
           <Route exact path="/Delivery" element={<Delivery />}></Route>
           <Route path="/Profile" element={<Profile />}></Route>
           <Route path="/*" element={<NotFound />}></Route>
+          <Route path="/back" element={<Cake />}></Route>
+          <Route path="/Account" element={<Account />}></Route>
+          <Route path="Dashboard" element={<Dashboard />}></Route>
+          <Route path="Logout" element={<Logout />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

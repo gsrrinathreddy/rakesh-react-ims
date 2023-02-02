@@ -106,6 +106,16 @@ export default function Carts() {
         Place order
       </Button>
 
+      <Button
+        onClick={() => {
+          navigate("/back");
+        }}
+        sx={{ color: "blue" }}
+        variant="text"
+      >
+        Go back to Bakery
+      </Button>
+
       {/*         
         {
             

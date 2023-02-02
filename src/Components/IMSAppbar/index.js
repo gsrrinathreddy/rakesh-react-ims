@@ -17,6 +17,7 @@ import IMSBadge from "../IMSBadge";
 import { useSelector } from "react-redux";
 import IMSAvatar from "../IMSAvatar";
 import IMSAutocomplete from "../IMSAutocomplete";
+import { NavLink } from "react-router-dom";
 
 export default function IMSAppbar(props) {
   let pages = props.pages;
@@ -47,7 +48,21 @@ export default function IMSAppbar(props) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      fontWeight: isActive ? "bold" : "normal",
+      //fontColor: isActive ? 'red' : 'white',
+      textDecoration: "none",
+      textTransform: "none",
+      my: 2,
+      fontSize: isActive ? "18px" : "16px",
+      display: "block",
+      color: isActive ? "Pink" : "white",
+      fontWeight: isActive ? "bold" : "normal",
+      marginRight: "10px",
+      marginLeft: "10px",
+    };
+  };
   return (
     <AppBar
       position="static"
@@ -138,8 +153,12 @@ export default function IMSAppbar(props) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link to={page} style={{ textDecoration: "none" }}>
-                <Button
+              <NavLink
+                to={page}
+                style={navLinkStyles}
+                onClick={handleCloseNavMenu}
+              >
+                {/* <Button
                   key={page}
                   onClick={handleCloseNavMenu}
                   sx={{
@@ -150,8 +169,9 @@ export default function IMSAppbar(props) {
                   }}
                 >
                   {page}
-                </Button>
-              </Link>
+                </Button> */}
+                {page}
+              </NavLink>
             ))}
           </Box>
 
@@ -165,17 +185,17 @@ export default function IMSAppbar(props) {
             </Link>
           </Box>
 
-          <Box sx={{ marginRight: "15px" }}>
+          {/* <Box sx={{ marginRight: "15px" }}>
             <Tooltip title="Delivery Status">
-              <Link to="Delivery">
+              <NavLink to="Delivery">
                 <IMSAvatar
                   photo={
                     "https://t4.ftcdn.net/jpg/04/29/81/81/360_F_429818115_FC8Yo1bGel4E8YXnLyA3HChkrGVU0h25.jpg"
                   }
                 ></IMSAvatar>
-              </Link>
+              </NavLink>
             </Tooltip>
-          </Box>
+          </Box> */}
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -204,11 +224,11 @@ export default function IMSAppbar(props) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <Link to={setting} style={{ textDecoration: "none" }}>
+                <NavLink to={setting} style={{ textDecoration: "none" }}>
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
-                </Link>
+                </NavLink>
               ))}
             </Menu>
           </Box>
