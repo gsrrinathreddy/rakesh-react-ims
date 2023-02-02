@@ -124,6 +124,7 @@ export default function ItemCard(props) {
               <IMSChip label={rating} col={colwarning}></IMSChip>
             </Stack>
           </Box>
+          <IMSChip label={m1}></IMSChip>
         </Box>
         <IMSChip label={dpoff} col={colblue}></IMSChip>
       </Card>

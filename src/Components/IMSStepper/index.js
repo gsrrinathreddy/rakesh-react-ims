@@ -8,23 +8,23 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 
-const steps = [
-  {
-    label: "Order Placed",
-    description: `Your order has been Placed`,
-  },
-  {
-    label: "dispatch Warehouse",
-    description: "Item dispatch from the Store",
-  },
-  {
-    label: "Order Recived",
-    description: `Your order has been Received Successfully`,
-  },
-];
+// const steps = [
+//   {
+//     label: "Order Placed",
+//     description: `Your order has been Placed`,
+//   },
+//   {
+//     label: "dispatch Warehouse",
+//     description: "Item dispatch from the Store",
+//   },
+//   {
+//     label: "Order Recived",
+//     description: `Your order has been Received Successfully`,
+//   },
+// ];
 
 export default function IMSStepper(props) {
-  let itemorders = props.itemorders;
+  let steps = props.steps;
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -53,6 +53,7 @@ export default function IMSStepper(props) {
             </StepLabel>
             <StepContent>
               <Typography>{step.description}</Typography>
+              <Typography>{step.itemname}</Typography>
               <Box sx={{ mb: 2 }}>
                 <Box>
                   <Button
