@@ -23,7 +23,7 @@ export default function Chocolateview() {
   const dispatch = useDispatch();
   let chocolate = useSelector((state) => state.chocolate.noOfChocolates);
   let msg = "   items added to cart ";
-  let msg2 = "Item Restocked";
+  let msg2 = "Delivery in 15 mins";
   let msg3 = "Item cancelled";
   let msgbut = "Add";
   const chocolateList = [
@@ -134,6 +134,7 @@ export default function Chocolateview() {
                 msg={msg}
                 orderbutton={msgbut}
                 order={ordered}
+                m1={msg2}
                 rating={item.rating}
               ></ItemCard>
             </Grid>

@@ -27,7 +27,7 @@ export default function Flowerview() {
   const dispatch = useDispatch();
   let flower = useSelector((state) => state.flower.noOfFlowers);
   let msg = "   items added to cart ";
-  let msg2 = "Item Restocked";
+  let msg2 = "Delivery in 45 mins";
   let msg3 = "Item cancelled";
 
   const flowerList = [
@@ -132,6 +132,7 @@ export default function Flowerview() {
                 msg={msg}
                 rating={item.rating}
                 order={ordered}
+                m1={msg2}
               ></ItemCard>
             </Grid>
           );

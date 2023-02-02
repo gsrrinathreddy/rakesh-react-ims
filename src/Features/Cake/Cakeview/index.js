@@ -31,7 +31,7 @@ export default function Cakeview() {
   const cakes = useSelector((state) => state.cake.noOfCakes);
   const ordercake = useSelector((state) => state.cake.noOfOrdered);
   console.log("no of cakes", cakes);
-  let msg1 = "Added to carts";
+  let msg1 = "Delivery in 60 mins";
   let msg2 = "Item deleted";
   let msg3 = "Items Restocked";
   let orderbutton = "Add";
@@ -176,7 +176,7 @@ export default function Cakeview() {
   let ap = "Actual Price ₹";
   let dp = "Actual Price ₹";
   let msg = "   items added to cart ";
-  let m1 = "Rating";
+
   return (
     <>
       <marquee>
@@ -202,7 +202,7 @@ export default function Cakeview() {
                 ap={ap}
                 orderbutton={orderbutton}
                 msg={msg}
-                m1={m1}
+                m1={msg1}
                 seller={item.sellingStatus}
                 order={ordered}
                 rating={item.rating}

@@ -24,7 +24,7 @@ export default function Icecreamview() {
   const dispatch = useDispatch();
   let icecreams = useSelector((state) => state.icecream.noOfIcecreams);
   let msg = "   items added to cart ";
-  let msg2 = "Item Restocked";
+  let msg2 = "Delivery in 30 mins";
   let msg3 = "Item cancelled";
 
   const icecreamList = [
@@ -134,6 +134,7 @@ export default function Icecreamview() {
                 seller={item.sellingStatus}
                 orderbutton={orderbutton}
                 msg={msg}
+                m1={msg2}
                 order={ordered}
                 rating={item.rating}
               ></ItemCard>

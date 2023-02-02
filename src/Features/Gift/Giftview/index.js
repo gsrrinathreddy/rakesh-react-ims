@@ -99,7 +99,7 @@ export default function Giftview() {
   const dispatch = useDispatch();
   let gift = useSelector((state) => state.gift.noOfGifts);
   let msg = "   items added to cart ";
-  let msg2 = "Item Restocked";
+  let msg2 = "Delivery in 45 mins";
   let msg3 = "Item cancelled";
   let orderbutton = "Add";
   let ordername = "gift";
@@ -128,6 +128,7 @@ export default function Giftview() {
                 msg={msg}
                 order={ordered}
                 rating={item.rating}
+                m1={msg2}
               ></ItemCard>
             </Grid>
           );

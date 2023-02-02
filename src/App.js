@@ -12,6 +12,7 @@ import Carts from "./Pages/Carts";
 import Bakery from "./Pages/Bakery";
 import Delivery from "./Pages/Delivery";
 import Profile from "./Pages/Profile";
+import NotFound from "./Pages/NotFound";
 
 function App() {
   const p1 = ["Cake", "Icecream", "Chocolate", "Gifts", "Flowers"];
@@ -33,6 +34,7 @@ function App() {
           <Route path="/" element={<Flowers />}></Route>
           <Route exact path="/Delivery" element={<Delivery />}></Route>
           <Route path="/Profile" element={<Profile />}></Route>
+          <Route path="/*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
