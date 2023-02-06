@@ -102,16 +102,17 @@ export default function Carts() {
         onClick={() => {
           navigate("/Delivery");
         }}
+        variant="outlined"
+        sx={{ marginLeft: "30px" }}
       >
         Place order
       </Button>
-
       <Button
         onClick={() => {
           navigate("/back");
         }}
-        sx={{ color: "blue" }}
-        variant="text"
+        sx={{ marginLeft: "30px" }}
+        variant="contained"
       >
         Go back to Bakery
       </Button>

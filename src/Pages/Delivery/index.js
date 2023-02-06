@@ -2,6 +2,9 @@ import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import IMSStepper from "../../Components/IMSStepper";
+import Addresspage from "../Addresspage";
+import { Box } from "@mui/material";
+import Checkoutpage from "../Checkoutpage";
 
 export default function Delivery() {
   let steps = [
@@ -38,15 +41,18 @@ export default function Delivery() {
   console.log("steps", steps);
   return (
     <>
-      <Typography>
+      {/* <Typography>
         {console.log("itemname", steps[0].itemname.length)}
         {steps[0].itemname.length >= 1 ? (
           <IMSStepper steps={steps}></IMSStepper>
         ) : (
           "Items Not Added to cart"
         )}
-        {/* <IMSStepper steps={steps}></IMSStepper> */}
-      </Typography>
+      </Typography> */}
+
+      <Box>
+        <Checkoutpage></Checkoutpage>
+      </Box>
     </>
   );
 }
