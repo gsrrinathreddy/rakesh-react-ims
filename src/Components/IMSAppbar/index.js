@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import IMSBadge from "../IMSBadge";
 import { useSelector } from "react-redux";
 import IMSAvatar from "../IMSAvatar";
@@ -48,6 +48,8 @@ export default function IMSAppbar(props) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const navigate = useNavigate();
+
   const navLinkStyles = ({ isActive }) => {
     return {
       fontWeight: isActive ? "bold" : "normal",
@@ -197,7 +199,7 @@ export default function IMSAppbar(props) {
             </Tooltip>
           </Box> */}
 
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0, marginRight: "10px" }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <IMSAvatar
@@ -231,6 +233,20 @@ export default function IMSAppbar(props) {
                 </NavLink>
               ))}
             </Menu>
+          </Box> */}
+          <Box>
+            <Tooltip>
+              <Box>
+                <Button
+                  color="inherit"
+                  variant="text"
+                  style={{ color: "black" }}
+                  onClick={() => navigate("Signup")}
+                >
+                  Sign up
+                </Button>
+              </Box>
+            </Tooltip>
           </Box>
         </Toolbar>
       </Container>

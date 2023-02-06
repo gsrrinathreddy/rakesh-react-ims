@@ -73,7 +73,7 @@ export default function ItemCard(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, cursor: "pointer" }}>
       <CardHeader
         // avatar={
         //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -135,15 +135,18 @@ export default function ItemCard(props) {
           <TextField
             sx={{ width: "100px" }}
             size="small"
-            id="outlined-basic"
             label="quantity"
             variant="outlined"
+            type="number "
+            InputProps={{
+              inputProps: { min: 0 },
+            }}
             defaultValue={0}
             onChange={(e) => setQty(e.currentTarget.value)}
           />
           <Button
             onClick={() => {
-              dispatch(orderplaced(params));
+              if (qty > 0) dispatch(orderplaced(params));
             }}
           >
             <IMSSnackbar

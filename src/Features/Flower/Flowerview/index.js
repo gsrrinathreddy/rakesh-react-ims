@@ -1,11 +1,8 @@
 import { useSelect } from "@mui/base";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import IMSSnackbar from "../../../Components/IMSSnackbar";
 import { restocked, ordered, cancelled } from "../flowerSlice";
-import combo from "../../../Assets/Flowers/combo.jpg";
 import gerberas from "../../../Assets/Flowers/gerberas.jpg";
-import lightrose from "../../../Assets/Flowers/lightrose.jpg";
 import mixed from "../../../Assets/Flowers/mixed.jpg";
 import mixrose from "../../../Assets/Flowers/mixrose.jpg";
 import pinkrose from "../../../Assets/Flowers/pinkrose.jpg";
@@ -60,7 +57,7 @@ export default function Flowerview() {
       photo: whiteroses,
       actualPrice: 1000,
       discountedPrice: 800,
-      sellingstatus: "Out Of Stock",
+      sellingstatus: "Perimum",
       rating: 4.5,
     },
     {
