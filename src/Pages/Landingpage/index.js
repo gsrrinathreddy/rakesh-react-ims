@@ -179,8 +179,8 @@ export default function Landingpage() {
       rating: 4.5,
     },
   ];
-  let ap = "Actual Price ₹";
-  let dp = "Actual Price ₹";
+  let ap = "₹";
+  let dp = "₹";
   let msg = "   items added to cart ";
   let msg1 = "Delivery in 60 mins";
   let orderbutton = "Add";
@@ -194,6 +194,10 @@ export default function Landingpage() {
         sx={{ backgroundColor: "pink" }}
       >
         {cakeList.map((item) => {
+          let discount = item.actualPrice - item.discountedPrice;
+          let discountedPercentage = Math.floor(
+            (discount / item.actualPrice) * 100
+          );
           return (
             <Grid item xs={3} justifyContent="center" display="flex">
               <ItemCard
@@ -210,6 +214,7 @@ export default function Landingpage() {
                 seller={item.sellingStatus}
                 order={cakeordered}
                 rating={item.rating}
+                discountedPercentage={discountedPercentage}
               ></ItemCard>
             </Grid>
           );
@@ -223,6 +228,10 @@ export default function Landingpage() {
         sx={{ backgroundColor: "pink" }}
       >
         {chocolateList.map((item) => {
+          let discount = item.actualPrice - item.discountedPrice;
+          let discountedPercentage = Math.floor(
+            (discount / item.actualPrice) * 100
+          );
           return (
             <Grid item xs={3} justifyContent="center" display="flex">
               <ItemCard
@@ -239,6 +248,7 @@ export default function Landingpage() {
                 seller={item.sellingstatus}
                 order={chocolateordered}
                 rating={item.rating}
+                discountedPercentage={discountedPercentage}
               ></ItemCard>
             </Grid>
           );
@@ -252,6 +262,10 @@ export default function Landingpage() {
         sx={{ backgroundColor: "pink" }}
       >
         {icecreamList.map((item) => {
+          let discount = item.actualPrice - item.discountedPrice;
+          let discountedPercentage = Math.floor(
+            (discount / item.actualPrice) * 100
+          );
           return (
             <Grid item xs={3} justifyContent="center" display="flex">
               <ItemCard
@@ -268,6 +282,7 @@ export default function Landingpage() {
                 seller={item.sellingStatus}
                 order={icecreamordered}
                 rating={item.rating}
+                discountedPercentage={discountedPercentage}
               ></ItemCard>
             </Grid>
           );
@@ -281,6 +296,10 @@ export default function Landingpage() {
         sx={{ backgroundColor: "pink" }}
       >
         {flowerList.map((item) => {
+          let discount = item.actualPrice - item.discountedPrice;
+          let discountedPercentage = Math.floor(
+            (discount / item.actualPrice) * 100
+          );
           return (
             <Grid item xs={3} justifyContent="center" display="flex">
               <ItemCard
@@ -297,6 +316,7 @@ export default function Landingpage() {
                 seller={item.sellingstatus}
                 order={flowerordered}
                 rating={item.rating}
+                discountedPercentage={discountedPercentage}
               ></ItemCard>
             </Grid>
           );

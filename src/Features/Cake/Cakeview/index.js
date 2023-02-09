@@ -25,12 +25,16 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Google } from "@mui/icons-material";
+import { Wished } from "../cakeSlice";
 
 export default function Cakeview() {
   const dispatch = useDispatch();
   const cakes = useSelector((state) => state.cake.noOfCakes);
-  const ordercake = useSelector((state) => state.cake.noOfOrdered);
   console.log("no of cakes", cakes);
+
+  const favorder = useSelector((state) => state.cake.noOfWishCakes);
+  console.log("Cake view fav order", favorder);
+
   let msg1 = "Delivery in 60 mins";
   let msg2 = "Item deleted";
   let msg3 = "Items Restocked";
@@ -173,8 +177,8 @@ export default function Cakeview() {
       sellingStatus: "Best Seller",
     },
   ];
-  let ap = "Actual Price ₹";
-  let dp = "Actual Price ₹";
+  let ap = "₹";
+  let dp = "₹";
   let msg = "   items added to cart ";
 
   return (
@@ -190,6 +194,10 @@ export default function Cakeview() {
         sx={{ backgroundColor: "pink" }}
       >
         {cakeList.map((item) => {
+          let discount = item.actualPrice - item.discountedPrice;
+          let discountedPercentage = Math.floor(
+            (discount / item.actualPrice) * 100
+          );
           return (
             <Grid item xs={3} justifyContent="center" display="flex">
               <ItemCard
@@ -200,12 +208,14 @@ export default function Cakeview() {
                 discountedPrice={item.discountedPrice}
                 dp={dp}
                 ap={ap}
+                discountedPercentage={discountedPercentage}
                 orderbutton={orderbutton}
                 msg={msg}
                 m1={msg1}
                 seller={item.sellingStatus}
                 order={ordered}
                 rating={item.rating}
+                favorder={Wished}
               ></ItemCard>
             </Grid>
           );

@@ -19,6 +19,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Google } from "@mui/icons-material";
+import { Wished } from "../flowerSlice";
 
 export default function Flowerview() {
   const dispatch = useDispatch();
@@ -104,8 +105,8 @@ export default function Flowerview() {
 
   let orderbutton = "Add";
   let ordername = "flower";
-  let ap = "Actual Price ₹";
-  let dp = "Actual Price ₹";
+  let ap = "₹";
+  let dp = "₹";
   return (
     <>
       <Grid
@@ -115,6 +116,10 @@ export default function Flowerview() {
         sx={{ backgroundColor: "pink" }}
       >
         {flowerList.map((item) => {
+          let discount = item.actualPrice - item.discountedPrice;
+          let discountedPercentage = Math.floor(
+            (discount / item.actualPrice) * 100
+          );
           return (
             <Grid item xs={3} justifyContent="center" display={"flex"}>
               <ItemCard
@@ -130,6 +135,8 @@ export default function Flowerview() {
                 rating={item.rating}
                 order={ordered}
                 m1={msg2}
+                favorder={Wished}
+                discountedPercentage={discountedPercentage}
               ></ItemCard>
             </Grid>
           );

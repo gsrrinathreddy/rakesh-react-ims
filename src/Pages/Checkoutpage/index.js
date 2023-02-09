@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Addresspage from "../Addresspage";
 import Reviewpage from "../Reviewpage";
 import Paymentpage from "../Paymentpage";
+import { useNavigate } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -47,6 +48,7 @@ function getStepContent(step) {
 const theme = createTheme();
 
 export default function Checkoutpage() {
+  const navigate = useNavigate();
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
@@ -99,6 +101,16 @@ export default function Checkoutpage() {
                 Your order number is #2001539. We have emailed your order
                 confirmation, and will send you an update when your order has
                 shipped.
+              </Typography>
+              <Typography>
+                <Button
+                  onClick={() => {
+                    navigate("/Home");
+                  }}
+                  variant="contained"
+                >
+                  Go back to Shopping
+                </Button>
               </Typography>
             </React.Fragment>
           ) : (

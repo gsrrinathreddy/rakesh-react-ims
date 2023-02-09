@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Google } from "@mui/icons-material";
+import { Google, Style } from "@mui/icons-material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -23,6 +23,8 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import IMSChip from "../IMSChip";
 import IMSSpeeddial from "../IMSSpeeddial";
+import { useNavigate } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -43,29 +45,47 @@ export default function ItemCard(props) {
   let actualPrice = props.actualPrice;
   let discountedPrice = props.discountedPrice;
   let rating = props.rating;
-  let ap = props.dp;
+  let ap = props.ap;
   let dp = props.dp;
   let msg = props.msg;
   let orderbutton = props.orderbutton;
+  let discountpercent = props.discountpercent;
   let m1 = props.m1;
   let seller = props.seller;
   let orderplaced = props.order;
+  let favorder = props.favorder;
   const dispatch = useDispatch();
-  let discount = actualPrice - discountedPrice;
-  let discountedPercentage = Math.floor((discount / actualPrice) * 100);
-  let dpoff = discountedPercentage + "% off ";
+  let dpoff = props.discountedPercentage + "% off ";
   let colblue = "primary";
   let colwarning = "warning";
   let colSuccess = "success";
+  let des = props.des;
+  const navigate = useNavigate();
 
   const [expanded, setExpanded] = React.useState(false);
   let [qty, setQty] = React.useState(0);
+  let [active, setActive] = React.useState();
 
   let params = {
     title: title,
     actualPrice: actualPrice,
     discountedPrice: discountedPrice,
+    photo: photo,
     qty: parseInt(qty),
+  };
+
+  let param = {
+    title: title,
+    actualPrice: actualPrice,
+    discountedPrice: discountedPrice,
+    photo: photo,
+    rating: rating,
+    seller: seller,
+    qty: parseInt(qty),
+  };
+
+  const like = () => {
+    setActive(!active);
   };
 
   const handleExpandClick = () => {
@@ -124,13 +144,18 @@ export default function ItemCard(props) {
         <IMSChip label={dpoff} col={colblue}></IMSChip>
       </Card>
       <CardContent>
+        <Stack direction="row" spacing={1}>
+          <Typography variant="h4">
+            {dp}
+            {discountedPrice}
+            <br />
+          </Typography>
+          <Typography variant="h6" sx={{ textDecorationLine: "line-through" }}>
+            {ap}
+            {actualPrice}
+          </Typography>
+        </Stack>
         <Typography>
-          <del>
-            {ap} {actualPrice}
-          </del>
-          <br />
-          {dp} {discountedPrice}
-          <br />
           <br />
           <TextField
             sx={{ width: "100px" }}
@@ -154,9 +179,22 @@ export default function ItemCard(props) {
               orderbutton={orderbutton}
             ></IMSSnackbar>
           </Button>
-          <IMSBadge badgeContent={qty}></IMSBadge>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
+          <IMSBadge
+            badgeContent={qty}
+            cartIcon={<ShoppingCartIcon />}
+          ></IMSBadge>
+          <IconButton
+            onClick={() => {
+              dispatch(favorder(param));
+            }}
+          >
+            <FavoriteIcon
+              onClick={like}
+              sx={{ color: active ? "red" : "grey" }}
+              // onClick={() => {
+              //   dispatch(favorder(fav));
+              // }}
+            />
           </IconButton>
           <IMSSpeeddial share={actions}></IMSSpeeddial>
           {/* <IconButton aria-label="share">

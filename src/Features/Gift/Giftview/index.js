@@ -19,6 +19,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { Google } from "@mui/icons-material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { Wished } from "../giftSlice";
 
 export default function Giftview() {
   const giftList = [
@@ -103,8 +104,8 @@ export default function Giftview() {
   let msg3 = "Item cancelled";
   let orderbutton = "Add";
   let ordername = "gift";
-  let ap = "Actual Price ₹";
-  let dp = "Actual Price ₹";
+  let ap = "₹";
+  let dp = "₹";
   return (
     <>
       <Grid
@@ -114,6 +115,10 @@ export default function Giftview() {
         sx={{ backgroundColor: "pink" }}
       >
         {giftList.map((item) => {
+          let discount = item.actualPrice - item.discountedPrice;
+          let discountedPercentage = Math.floor(
+            (discount / item.actualPrice) * 100
+          );
           return (
             <Grid item xs={3} justifyContent="center" display={"flex"}>
               <ItemCard
@@ -129,6 +134,8 @@ export default function Giftview() {
                 order={ordered}
                 rating={item.rating}
                 m1={msg2}
+                favorder={Wished}
+                discountedPercentage={discountedPercentage}
               ></ItemCard>
             </Grid>
           );

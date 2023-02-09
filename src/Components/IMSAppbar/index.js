@@ -18,6 +18,8 @@ import { useSelector } from "react-redux";
 import IMSAvatar from "../IMSAvatar";
 import IMSAutocomplete from "../IMSAutocomplete";
 import { NavLink } from "react-router-dom";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 export default function IMSAppbar(props) {
   let pages = props.pages;
@@ -28,8 +30,17 @@ export default function IMSAppbar(props) {
   let orderchocolate = useSelector((state) => state.chocolate.noOfOrdered);
   let ordergift = useSelector((state) => state.gift.noOfOrdered);
   let orderflower = useSelector((state) => state.flower.noOfOrdered);
+  let orderproductitems = useSelector(
+    (state) => state.productitems.noOfProductItems
+  );
+
   let sum =
-    ordercake + ordericecream + orderchocolate + ordergift + orderflower;
+    ordercake +
+    ordericecream +
+    orderchocolate +
+    ordergift +
+    orderflower +
+    orderproductitems;
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -181,9 +192,17 @@ export default function IMSAppbar(props) {
             <IMSAutocomplete menu={menu}></IMSAutocomplete>
           </Box>
 
-          <Box sx={{ marginRight: "10px" }} title="Cart">
+          <Box sx={{ marginRight: "15px" }} title="Cart">
             <Link to="Carts">
-              <IMSBadge badgeContent={sum}></IMSBadge>
+              <IMSBadge
+                badgeContent={sum}
+                cartIcon={<ShoppingCartIcon />}
+              ></IMSBadge>
+            </Link>
+          </Box>
+          <Box sx={{ marginRight: "10px" }} title="Wishlist">
+            <Link to="Fav">
+              <IMSBadge cartIcon={<BookmarkIcon></BookmarkIcon>}></IMSBadge>
             </Link>
           </Box>
 
@@ -254,7 +273,7 @@ export default function IMSAppbar(props) {
   );
 }
 const menu = [
-  { label: "Cakes" },
+  { label: "Cake" },
   { label: "Icecream" },
   { label: "Chocolate" },
   { label: "Gifts" },

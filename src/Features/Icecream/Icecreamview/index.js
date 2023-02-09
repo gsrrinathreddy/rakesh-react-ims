@@ -19,6 +19,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Google } from "@mui/icons-material";
+import { Wished } from "../icecreamSlice";
 
 export default function Icecreamview() {
   const dispatch = useDispatch();
@@ -109,8 +110,8 @@ export default function Icecreamview() {
       rating: 5.0,
     },
   ];
-  let ap = "Actual Price ₹";
-  let dp = "Actual Price ₹";
+  let ap = "₹";
+  let dp = "₹";
   let orderbutton = "Add";
 
   return (
@@ -122,6 +123,10 @@ export default function Icecreamview() {
         sx={{ backgroundColor: "pink" }}
       >
         {icecreamList.map((item) => {
+          let discount = item.actualPrice - item.discountedPrice;
+          let discountedPercentage = Math.floor(
+            (discount / item.actualPrice) * 100
+          );
           return (
             <Grid item xs={3} justifyContent="center" display={"flex"}>
               <ItemCard
@@ -137,6 +142,8 @@ export default function Icecreamview() {
                 m1={msg2}
                 order={ordered}
                 rating={item.rating}
+                favorder={Wished}
+                discountedPercentage={discountedPercentage}
               ></ItemCard>
             </Grid>
           );

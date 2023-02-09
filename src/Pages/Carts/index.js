@@ -1,26 +1,28 @@
-import { Button, Typography, Box } from "@mui/material";
+import { Button, Typography, Box, Divider } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  ordered as cakeordered,
-  cancelled as cakecancelled,
-  ordered,
-} from "../../Features/Cake/cakeSlice";
-import {
-  ordered as chocolateordered,
-  cancelled as chocolatecancelled,
-} from "../../Features/Chocolate/chocolateSlice";
-import {
-  ordered as icecreamordered,
-  cancelled as icecreamcancelled,
-} from "../../Features/Icecream/icecreamSlice";
-import {
-  ordered as giftordered,
-  cancelled as giftcancelled,
-} from "../../Features/Gift/giftSlice";
-import {
-  ordered as flowerordered,
-  cancelled as flowercancelled,
-} from "../../Features/Flower/flowerSlice";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+// import {
+//   ordered as cakeordered,
+//   cancelled as cakecancelled,
+//   ordered,
+// } from "../../Features/Cake/cakeSlice";
+// import {
+//   ordered as chocolateordered,
+//   cancelled as chocolatecancelled,
+// } from "../../Features/Chocolate/chocolateSlice";
+// import {
+//   ordered as icecreamordered,
+//   cancelled as icecreamcancelled,
+// } from "../../Features/Icecream/icecreamSlice";
+// import {
+//   ordered as giftordered,
+//   cancelled as giftcancelled,
+// } from "../../Features/Gift/giftSlice";
+// import {
+//   ordered as flowerordered,
+//   cancelled as flowercancelled,
+// } from "../../Features/Flower/flowerSlice";
 import Grid from "@mui/material/Grid";
 import { useNavigate } from "react-router-dom";
 import IMSSnackbar from "../../Components/IMSSnackbar";
@@ -59,7 +61,24 @@ export default function Carts() {
               Name
             </Typography>
             {cartList.map((item) => {
-              return <Typography>{item.title}</Typography>;
+              return (
+                <Typography>
+                  {item.title}
+                  <Card
+                    sx={{
+                      width: "70px",
+                      marginLeft: "60px",
+                      marginRight: "20px",
+                    }}
+                  >
+                    <CardMedia
+                      sx={{ height: "50px" }}
+                      component="img"
+                      image={item.photo}
+                    />
+                  </Card>
+                </Typography>
+              );
             })}
           </Grid>
           <Grid md={2}>
@@ -67,7 +86,9 @@ export default function Carts() {
               qty
             </Typography>
             {cartList.map((item) => {
-              return <Typography>{item.qty}</Typography>;
+              return (
+                <Typography sx={{ marginTop: "40px" }}>{item.qty}</Typography>
+              );
             })}
           </Grid>
           <Grid md={2}>
@@ -75,7 +96,11 @@ export default function Carts() {
               Actual Price
             </Typography>
             {cartList.map((item) => {
-              return <Typography>{item.actualPrice}</Typography>;
+              return (
+                <Typography sx={{ marginTop: "40px" }}>
+                  {item.actualPrice}
+                </Typography>
+              );
             })}
           </Grid>
           <Grid md={2}>
@@ -83,7 +108,11 @@ export default function Carts() {
               Discounted Price
             </Typography>
             {cartList.map((item) => {
-              return <Typography>{item.discountedPrice}</Typography>;
+              return (
+                <Typography sx={{ marginTop: "40px" }}>
+                  {item.discountedPrice}
+                </Typography>
+              );
             })}
           </Grid>
           <Grid md={3}>
@@ -92,8 +121,13 @@ export default function Carts() {
             </Typography>
             {cartList.map((item) => {
               sum += item.qty * item.discountedPrice;
-              return <Typography>{item.qty * item.discountedPrice}</Typography>;
+              return (
+                <Typography sx={{ marginTop: "40px" }}>
+                  {item.qty * item.discountedPrice}
+                </Typography>
+              );
             })}
+            <Divider></Divider>
             Total Amount to be Paid :{sum}
           </Grid>
         </Grid>
@@ -109,7 +143,7 @@ export default function Carts() {
       </Button>
       <Button
         onClick={() => {
-          navigate("/back");
+          navigate("/Home");
         }}
         sx={{ marginLeft: "30px" }}
         variant="contained"
