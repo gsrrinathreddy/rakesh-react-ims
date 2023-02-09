@@ -22,9 +22,24 @@ import Paymentpage from "./Pages/Paymentpage";
 import Reviewpage from "./Pages/Reviewpage";
 import Checkoutpage from "./Pages/Checkoutpage";
 import Signup from "./Pages/Signup";
+import Fav from "./Pages/Fav";
+import Users from "./Pages/Users";
+import Products from "./Pages/Products";
+import ProductsApi from "./Pages/ProductsApi";
+import PostsApi from "./Pages/PostsApi";
+import Taskpage from "./Pages/Taskpage";
 
 function App() {
-  const p1 = ["Home", "Cake", "Icecream", "Chocolate", "Gifts", "Flowers"];
+  const p1 = [
+    "Home",
+    "Cake",
+    "Icecream",
+    "Chocolate",
+    "Gifts",
+    "Flowers",
+    "Users",
+    "Products",
+  ];
   const s1 = ["Profile", "Account", "Dashboard", "Delivery", "Logout"];
   let lp = "Bakery";
   console.log("updated");
@@ -51,6 +66,12 @@ function App() {
           <Route path="/Paymentpage" element={<Paymentpage />}></Route>
           <Route path="/Checkoutpage" element={<Checkoutpage />}></Route>
           <Route path="/Home" element={<Landingpage />}></Route>
+          <Route path="/Fav" element={<Fav />}></Route>
+          <Route path="/Users" element={<Users />}></Route>
+          <Route path="/Products" element={<Products />}></Route>
+          <Route path="/ProductsApi" element={<ProductsApi />}></Route>
+          <Route path="/PostsApi" element={<PostsApi />}></Route>
+          <Route path="/Taskpage" element={<Taskpage />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -18,6 +18,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { Google } from "@mui/icons-material";
+import { Wished } from "../chocolateSlice";
 
 export default function Chocolateview() {
   const dispatch = useDispatch();
@@ -108,8 +109,8 @@ export default function Chocolateview() {
       rating: 3.7,
     },
   ];
-  let ap = "Actual Price ₹";
-  let dp = "Actual Price ₹";
+  let ap = "₹";
+  let dp = "₹";
   let ordername = "chocolate";
 
   return (
@@ -121,6 +122,10 @@ export default function Chocolateview() {
         sx={{ backgroundColor: "pink" }}
       >
         {chocolateList.map((item) => {
+          let discount = item.actualPrice - item.discountedPrice;
+          let discountedPercentage = Math.floor(
+            (discount / item.actualPrice) * 100
+          );
           return (
             <Grid item xs={3} justifyContent="center" display={"flex"}>
               <ItemCard
@@ -134,8 +139,10 @@ export default function Chocolateview() {
                 msg={msg}
                 orderbutton={msgbut}
                 order={ordered}
+                favorder={Wished}
                 m1={msg2}
                 rating={item.rating}
+                discountedPercentage={discountedPercentage}
               ></ItemCard>
             </Grid>
           );
